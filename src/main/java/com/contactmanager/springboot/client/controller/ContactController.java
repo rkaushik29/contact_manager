@@ -1,17 +1,17 @@
 package com.contactmanager.springboot.client.controller;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -68,11 +68,14 @@ public class ContactController {
 
         try {
             ContactDTO existingContact = contactService.getCurrentContact(Long.valueOf(contactId));
-            System.out.println("got the existing contact");
             NotesDTO existingNote = existingContact.getNoteDTO();
             // Here, you could return existingContact to the frontend for user confirmation before updating
+            if (noteText != null && existingNote == null) {
+            	existingNote = new NotesDTO(noteText, existingContact.getId());
+            }
             if (noteText != null) {
             	existingNote.setNoteText(noteText);
+            	existingNote.setDateCreated(new Date());
             }
             ContactDTO updatedContact = new ContactDTO(Long.valueOf(contactId), firstName, lastName, phoneNum, emailAddr, addr, existingContact.getDateCreated(), existingNote);
             contactService.editContact(updatedContact);
