@@ -124,13 +124,16 @@ public class Contact {
 	public Date getDateCreated() {
 		return this.dateCreated;
 	}
+
+	public void setDate(Date date) {
+		this.dateCreated = date;
+	}
 	
 	public Notes getNote() {
 		return this.note;
 	}
-
-	public void setDate(Date date) {
-		this.dateCreated = date;
-		
+	
+	public void setNote(Notes note) {
+		this.note = note;
 	}
 }
