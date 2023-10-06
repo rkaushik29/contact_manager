@@ -58,6 +58,18 @@ public class Contact {
     	this.phoneNum = phoneNumber;
     	this.address = address;
     	this.dateCreated = new Date();
+    	this.note = null;
+    }
+    
+    public Contact(Long id, String firstName, String lastName, String email, Long phoneNumber, String address, Notes note) {
+    	this.id = id;
+    	this.firstName = firstName;
+    	this.lastName = lastName;
+    	this.emailAddr = email;
+    	this.phoneNum = phoneNumber;
+    	this.address = address;
+    	this.dateCreated = new Date();
+    	this.note = note;
     }
     
     // Getters and setters
@@ -111,5 +123,9 @@ public class Contact {
 	
 	public Date getDateCreated() {
 		return this.dateCreated;
+	}
+	
+	public Notes getNote() {
+		return this.note;
 	}
 }
