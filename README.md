@@ -15,6 +15,7 @@ Also, ensure you have Eclipse IDE to run the server.
 - Run `Show Contacts` only after adding >= 1 contacts. Check here for contact IDs to use when deleting contacts.
 - Run `Update Contacts` only after adding >= 1 contacts.
 - Run `Delete Contact` only after adding a contact.
+- Run `Search` after adding a contact, and you can search by first or last name (even partial names).
 
 Note: If you run the latter endpoints before `Add` they will not kill the server, but you won't get anything meaningful from it apart from an error message.
 

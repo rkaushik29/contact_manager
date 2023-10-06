@@ -114,7 +114,7 @@ public class ContactService {
         return savedContactDTO;
     }
     
-    // Show all contacts
+    // Show all contacts in a page of ContactDTO by searching all contacts in H2
     public Page<ContactDTO> showAllContacts(Pageable pageable) throws NotFoundException {
         Page<Contact> contacts = contactRepository.findAll(pageable);
         
@@ -180,5 +180,16 @@ public class ContactService {
         // Confirmation message
         System.out.println("Contact with ID " + contactId + " has been deleted.");
     }
+    
+    // Method to find names that contain the search parameter, and return results as a Page of ContactDTO.
+	public Page<ContactDTO> findContactsByName(String name, Pageable pageable) throws NotFoundException {
+		Page<Contact> all_contacts = contactRepository.findByFirstNameIgnoreCaseContainingOrLastNameIgnoreCaseContaining(name, name, pageable);
+		
+		if (all_contacts.isEmpty()) {
+            throw new NotFoundException();
+        }
+		
+		return all_contacts.map(contact -> new ContactDTO(contact.getId(), contact.getFirstName(), contact.getLastName(), contact.getPhoneNumber(), contact.getEmail(), contact.getAddress(), contact.getDateCreated(), new NotesDTO(contact.getNote(), contact.getId())));
+	}
 
 }

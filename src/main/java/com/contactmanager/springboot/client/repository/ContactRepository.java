@@ -21,7 +21,7 @@ public interface ContactRepository extends JpaRepository<Contact, Long> {
 	Page<Contact> findByFirstNameIgnoreCaseContainingOrLastNameIgnoreCaseContaining(String fname, String lname, Pageable pageable);
 	Page<Contact> findByDateCreatedBefore(Date date, Pageable pageable);
 	Page<Contact> findAll(Pageable pageable);
-	
+	// Search note with partial text
 	@Query("SELECT c FROM Contact c JOIN c.notes n WHERE LOWER(n.noteText) LIKE LOWER(CONCAT('%', :noteText, '%'))")
 	Page<Contact> findContactsWithNoteContaining(@Param("noteText") String noteText, Pageable pageable);
 

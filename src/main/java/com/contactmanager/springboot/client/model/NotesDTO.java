@@ -8,6 +8,7 @@ public class NotesDTO {
     private String noteText;
     private Date dateCreated;
 
+    // Overloaded constructors for varying inputs
     public NotesDTO() {}
     
     public NotesDTO(Notes note) {

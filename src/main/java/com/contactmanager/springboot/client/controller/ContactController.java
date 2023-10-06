@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -102,7 +103,6 @@ public class ContactController {
 	        
 	        return ResponseEntity.ok(contactsPage);
 	    } catch (Exception e) {
-	        // Handle other exceptions and return an appropriate error response
 	        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 	    }
 	}
@@ -116,5 +116,28 @@ public class ContactController {
         } catch (EntityNotFoundException e) {
             return new ResponseEntity<>("Contact not found.", HttpStatus.NOT_FOUND);
         }
+    }
+    
+    // Endpoint to search name of contact
+    @GetMapping("/search")
+    public ResponseEntity<Page<ContactDTO>> findContactsByName(
+            @RequestParam(name = "name", required = true) String name,
+            @RequestParam(name = "page", defaultValue = "0") int page,
+            @RequestParam(name = "size", defaultValue = "10") int size,
+            @RequestParam(name = "sort", defaultValue = "id") String sort) {
+
+        Pageable pageable = PageRequest.of(page, size, Sort.by(sort));
+        try {
+			Page<ContactDTO> contacts = contactService.findContactsByName(name, pageable);
+			
+			if (contacts.isEmpty()) {
+	            return ResponseEntity.noContent().build(); // Return 204 No Content
+	        }
+			
+			return ResponseEntity.ok(contacts);
+		} catch (NotFoundException e) {
+			e.printStackTrace();
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+		}
     }
 }
