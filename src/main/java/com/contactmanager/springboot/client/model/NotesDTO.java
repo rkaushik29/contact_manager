@@ -16,12 +16,19 @@ public class NotesDTO {
     	this.noteText = note.getNoteText();
     	this.dateCreated = note.getDate();
     }
+    public NotesDTO(Notes note, Long id) {
+    	this.id = note.getId();
+    	this.contactId = id;
+    	this.noteText = note.getNoteText();
+    	this.dateCreated = note.getDate();
+    }
     
     public NotesDTO(String text, Long id) {
     	this.contactId = id;
     	this.noteText = text;
     	this.dateCreated = new Date();
     }
+    
 
     public NotesDTO(Long id, Long contactId, String noteText, Date dateCreated) {
         this.id = id;

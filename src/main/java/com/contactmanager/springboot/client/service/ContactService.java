@@ -123,7 +123,7 @@ public class ContactService {
         }
 
         // Return a mapping from contact to the DTO for Pages
-        return contacts.map(contact -> new ContactDTO(contact.getId(), contact.getFirstName(), contact.getLastName(), contact.getPhoneNumber(), contact.getEmail(), contact.getAddress(), contact.getDateCreated()));
+        return contacts.map(contact -> new ContactDTO(contact.getId(), contact.getFirstName(), contact.getLastName(), contact.getPhoneNumber(), contact.getEmail(), contact.getAddress(), contact.getDateCreated(), new NotesDTO(contact.getNote(), contact.getId())));
     }
     
     // Method to fetch current details
@@ -160,7 +160,6 @@ public class ContactService {
         // Save edited details
         notesRepository.save(existingNotes);
         Contact savedContact = contactRepository.save(existingContact);
-        System.out.println("saved contact found");
 
         // Transform entities to DTO
         ContactDTO savedContactDTO = new ContactDTO(savedContact, new NotesDTO(existingNotes));
