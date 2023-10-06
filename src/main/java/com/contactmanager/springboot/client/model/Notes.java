@@ -1,4 +1,4 @@
-package model;
+package com.contactmanager.springboot.client.model;
 
 import java.util.Date;
 import jakarta.persistence.Column;
@@ -15,7 +15,7 @@ public class Notes {
 	
 	// Properties of the Notes Entity
     @Id
-    @Column(name = "note_id")
+    @Column(name = "notes_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
