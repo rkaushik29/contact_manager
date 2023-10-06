@@ -24,3 +24,9 @@ The system contains:
 - Service Classes for business logic involving contacts and notes
 - Controller for Contacts to define endpoints for data access and manipulation.
 - DTO classes for transferring data through different application levels.
+
+
+[GPT Conversation](https://chat.openai.com/share/46a5c29f-3a1f-4417-8f7d-f6ac2f02bbd0)
+
+I used GPT in this assessment to discuss tradeoffs on approaches, explanation of concepts I don't yet understand (since I don't have highly advanced knowledge in Java), and debugging some code in the end since I was running short on time. I did not use GPT for any other code generation. The screenshots are in the `img` folder.
+
