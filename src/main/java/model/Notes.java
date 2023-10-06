@@ -6,6 +6,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -27,15 +28,18 @@ public class Notes {
     @Column(name = "date_created")
     private Date dateCreated;
     
+    // Bidirectional relation between Contact and Note
+    @OneToOne(mappedBy = "notes")
+    private Contact contact;
+    
     // Default Constructor
     public Notes() {
     	
     }
     
     // Parameterized Constructor
-    public Notes(Long noteId, Long contactId, String noteText) {
-    	this.id = noteId;
-    	this.contactId = contactId;
+    public Notes(String noteText) {
+    	this.contactId = contact.getId();
     	this.noteText = noteText;
     }
     
