@@ -135,22 +135,22 @@ public class ContactService {
     }
     
     // Method to edit contact details
-    public ContactDTO editContact(Long contactId, String newFirstName, String newLastName, String newPhoneNum, String newEmailAddr, String newAddress, String newNoteText) {
-        Optional<Contact> optionalContact = contactRepository.findById(contactId);
+    public ContactDTO editContact(ContactDTO contact) {
+        Optional<Contact> optionalContact = contactRepository.findById(contact.getId());
         if (!optionalContact.isPresent()) {
-            throw new EntityNotFoundException("Contact with ID " + contactId + " not found.");
+            throw new EntityNotFoundException("Contact with name: " + contact.getFirstName() + " " + contact.getLastName() + " not found.");
         }
 
         // Edit contact and note details
         Contact existingContact = optionalContact.get();
         Notes existingNotes = existingContact.getNote();
         
-        existingContact.setFirstName(newFirstName != null ? newFirstName : existingContact.getFirstName());
-        existingContact.setLastName(newLastName != null ? newLastName : existingContact.getLastName());
-        existingContact.setPhoneNumber(newPhoneNum != null ? newPhoneNum : Long.toString(existingContact.getPhoneNumber()));
-        existingContact.setEmail(newEmailAddr != null ? newEmailAddr : existingContact.getEmail());
-        existingContact.setAddress(newAddress != null ? newAddress : existingContact.getAddress());
-        existingNotes.setNoteText(newNoteText != null ? newNoteText : existingNotes.getNoteText());
+        existingContact.setFirstName(contact.getFirstName() != null ? contact.getFirstName() : existingContact.getFirstName());
+        existingContact.setLastName(contact.getLastName() != null ? contact.getLastName() : existingContact.getLastName());
+        existingContact.setPhoneNumber(contact.getPhoneNum() != null ? Long.toString(contact.getPhoneNum()) : Long.toString(existingContact.getPhoneNumber()));
+        existingContact.setEmail(contact.getEmailAddr() != null ? contact.getEmailAddr() : existingContact.getEmail());
+        existingContact.setAddress(contact.getAddress() != null ? contact.getAddress() : existingContact.getAddress());
+        existingNotes.setNoteText(contact.getNoteDTO().getNoteText() != null ? contact.getNoteDTO().getNoteText() : existingNotes.getNoteText());
         existingNotes.setDate(new Date()); // Update the date created to the current date
 
         // Save edited details

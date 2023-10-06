@@ -28,7 +28,7 @@ public class ContactDTO {
         this.notesDto = notesDto;
     }
     
-    public ContactDTO(Long id, String fname, String lname, String email, String phone, String addr, Date dateCreated) {
+    public ContactDTO(Long id, String fname, String lname, String phone, String email, String addr, Date dateCreated) {
     	this.id = id;
         this.firstName = fname;
         this.lastName = lname;
@@ -39,7 +39,7 @@ public class ContactDTO {
         this.notesDto = new NotesDTO();
     }
 
-    public ContactDTO(Long id, String fname, String lname, String email, String phone) {
+    public ContactDTO(Long id, String fname, String lname, String phone, String email) {
         this.firstName = fname;
         this.lastName = lname;
         this.emailAddr = email;
