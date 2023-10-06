@@ -1,4 +1,4 @@
-package model;
+package com.contactmanager.springboot.client.model;
 
 import java.util.Date;
 import jakarta.persistence.CascadeType;
@@ -17,14 +17,14 @@ public class Contact {
 	
 	// Properties of the Contact Entity along with column name mappings
     @Id
-    @Column(name = "id")
+    @Column(name = "contact_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    @Column(name = "fname")
+    @Column(name = "first_name")
     private String firstName;
     
-    @Column(name = "lname")
+    @Column(name = "last_name")
     private String lastName;
     
     @Column(name = "phone_num")
@@ -41,8 +41,8 @@ public class Contact {
 
     // Composition: Each contact has a note object
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "note_id", referencedColumnName = "id")
-    private Notes note;
+    @JoinColumn(name = "contact_id", referencedColumnName = "notes_id")
+    private Notes notes;
     
     
     // Default constructor
@@ -58,7 +58,7 @@ public class Contact {
     	this.phoneNum = phoneNumber;
     	this.address = address;
     	this.dateCreated = new Date();
-    	this.note = null;
+    	this.notes = null;
     }
     
     public Contact(Long id, String firstName, String lastName, String email, Long phoneNumber, String address, Notes note) {
@@ -69,7 +69,7 @@ public class Contact {
     	this.phoneNum = phoneNumber;
     	this.address = address;
     	this.dateCreated = new Date();
-    	this.note = note;
+    	this.notes = note;
     }
     
     // Getters and setters
@@ -130,10 +130,10 @@ public class Contact {
 	}
 	
 	public Notes getNote() {
-		return this.note;
+		return this.notes;
 	}
 	
 	public void setNote(Notes note) {
-		this.note = note;
+		this.notes = note;
 	}
 }

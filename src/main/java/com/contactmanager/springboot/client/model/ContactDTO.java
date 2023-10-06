@@ -1,4 +1,4 @@
-package model;
+package com.contactmanager.springboot.client.model;
 
 import java.util.Date;
 
