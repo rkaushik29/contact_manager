@@ -15,6 +15,7 @@ import com.contactmanager.springboot.client.model.Contact;
 public interface ContactRepository extends JpaRepository<Contact, Long> {
 	// Custom queries using naming convention of JPQL.
 	// Page and Pageable types used for pagination
+	Page<Contact> findById(Long id, Pageable pageable);
 	Page<Contact> findByEmail(String email, Pageable pageable);
 	// Find contact by partial name by searchinf both first and last name for a match
 	Page<Contact> findByFirstNameIgnoreCaseContainingOrLastNameIgnoreCaseContaining(String fname, String lname, Pageable pageable);
