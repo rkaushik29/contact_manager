@@ -18,7 +18,7 @@
 					}
 				],
 				"url": {
-					"raw": "http://localhost:8080/api/contacts/add?firstName=Ro&lastName=Kau&phoneNum=98451456889&emailAddr=abc@123.com&addr=test&noteText=Hello",
+					"raw": "http://localhost:8080/api/contacts/add?firstName=Ro&lastName=Kaushik&phoneNum=98451456889&emailAddr=abc@123.com&addr=test&noteText=Hello",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -36,7 +36,7 @@
 						},
 						{
 							"key": "lastName",
-							"value": "Kau"
+							"value": "Kaushik"
 						},
 						{
 							"key": "phoneNum",
@@ -162,6 +162,33 @@
 						{
 							"key": "contactId",
 							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search for Contact",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/contacts/search?name=kaush",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"contacts",
+						"search"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "kaush"
 						}
 					]
 				}
