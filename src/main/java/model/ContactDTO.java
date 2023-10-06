@@ -16,7 +16,8 @@ public class ContactDTO {
     // Overloaded Constructors for varying input information
     public ContactDTO() {}
     
-    public ContactDTO(String fname, String lname, String email, String phone, String addr, NotesDTO notesDto) {
+    public ContactDTO(Long id, String fname, String lname, String email, String phone, String addr, NotesDTO notesDto) {
+    	this.id = id;
         this.firstName = fname;
         this.lastName = lname;
         this.emailAddr = email;
@@ -26,7 +27,8 @@ public class ContactDTO {
         this.notesDto = notesDto;
     }
     
-    public ContactDTO(String fname, String lname, String email, String phone, String addr) {
+    public ContactDTO(Long id, String fname, String lname, String email, String phone, String addr) {
+    	this.id = id;
         this.firstName = fname;
         this.lastName = lname;
         this.emailAddr = email;
@@ -35,7 +37,7 @@ public class ContactDTO {
         this.notesDto = new NotesDTO();
     }
 
-    public ContactDTO(String fname, String lname, String email, String phone) {
+    public ContactDTO(Long id, String fname, String lname, String email, String phone) {
         this.firstName = fname;
         this.lastName = lname;
         this.emailAddr = email;
