@@ -128,4 +128,9 @@ public class Contact {
 	public Notes getNote() {
 		return this.note;
 	}
+
+	public void setDate(Date date) {
+		this.dateCreated = date;
+		
+	}
 }
