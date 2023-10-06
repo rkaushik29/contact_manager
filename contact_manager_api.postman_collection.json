@@ -1,0 +1,172 @@
+{
+	"info": {
+		"_postman_id": "3d192b44-01cd-4a7a-8da9-7b910dcf1674",
+		"name": "Contact Manager",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30319544"
+	},
+	"item": [
+		{
+			"name": "Add Contact",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/contacts/add?firstName=Ro&lastName=Kau&phoneNum=98451456889&emailAddr=abc@123.com&addr=test&noteText=Hello",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"contacts",
+						"add"
+					],
+					"query": [
+						{
+							"key": "firstName",
+							"value": "Ro"
+						},
+						{
+							"key": "lastName",
+							"value": "Kau"
+						},
+						{
+							"key": "phoneNum",
+							"value": "98451456889"
+						},
+						{
+							"key": "emailAddr",
+							"value": "abc@123.com"
+						},
+						{
+							"key": "addr",
+							"value": "test"
+						},
+						{
+							"key": "noteText",
+							"value": "Hello"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Show All Contacts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/contacts/all?page=0&size=10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"contacts",
+						"all"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "0"
+						},
+						{
+							"key": "size",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edit Contact",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/contacts/update?contactId=1&firstName=Jack&lastName=Chan&phoneNum=12345799&emailAddr=jack@chan.com&addr=test2&noteText=Updated Test",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"contacts",
+						"update"
+					],
+					"query": [
+						{
+							"key": "contactId",
+							"value": "1"
+						},
+						{
+							"key": "firstName",
+							"value": "Jack"
+						},
+						{
+							"key": "lastName",
+							"value": "Chan"
+						},
+						{
+							"key": "phoneNum",
+							"value": "12345799"
+						},
+						{
+							"key": "emailAddr",
+							"value": "jack@chan.com"
+						},
+						{
+							"key": "addr",
+							"value": "test2"
+						},
+						{
+							"key": "noteText",
+							"value": "Updated Test"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Contact",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/contacts/delete?contactId=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"contacts",
+						"delete"
+					],
+					"query": [
+						{
+							"key": "contactId",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
