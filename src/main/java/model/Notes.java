@@ -68,6 +68,10 @@ public class Notes {
     	return this.noteText;
     }
     
+    public void setDate(Date date) {
+    	this.dateCreated = date;
+    }
+    
     public Date getDate() {
     	return this.dateCreated;
     }

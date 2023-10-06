@@ -8,7 +8,13 @@ public class NotesDTO {
     private String noteText;
     private Date dateCreated;
 
-    public NotesDTO() {
+    public NotesDTO() {}
+    
+    public NotesDTO(Notes note) {
+    	this.id = note.getId();
+    	this.contactId = note.getContactId();
+    	this.noteText = note.getNoteText();
+    	this.dateCreated = note.getDate();
     }
 
     public NotesDTO(Long id, Long contactId, String noteText, Date dateCreated) {
