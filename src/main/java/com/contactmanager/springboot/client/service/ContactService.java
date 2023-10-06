@@ -26,6 +26,7 @@ public class ContactService {
 
     @Autowired
     private ContactRepository contactRepository;
+    @Autowired
     private NotesRepository notesRepository;
     
     // Show contact by partial name search, searching first and last name.

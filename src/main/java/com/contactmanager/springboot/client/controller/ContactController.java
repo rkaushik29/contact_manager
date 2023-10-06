@@ -90,17 +90,6 @@ public class ContactController {
         Pageable pageable = PageRequest.of(page, size, Sort.by(sort));
         return contactService.showAllContacts(pageable);
     }
-	
-	// Endpoint to fetch contact details for confirmation
-    @GetMapping("/confirm-delete/{contactId}")
-    public ResponseEntity<ContactDTO> fetchContactForDeletion(@PathVariable Long contactId) {
-        try {
-            ContactDTO contactDTO = contactService.getCurrentContact(contactId);
-            return new ResponseEntity<>(contactDTO, HttpStatus.OK);
-        } catch (EntityNotFoundException e) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-    }
     
     // Endpoint to delete a contact after confirmation
     @DeleteMapping("/delete")
