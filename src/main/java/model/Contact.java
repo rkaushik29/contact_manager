@@ -50,12 +50,12 @@ public class Contact {
     }
 
     // Parameterized constructor
-    public Contact(Long id, String firstName, String lastName, String email, String phoneNumber, String address) {
+    public Contact(Long id, String firstName, String lastName, String email, Long phoneNumber, String address) {
     	this.id = id;
     	this.firstName = firstName;
     	this.lastName = lastName;
     	this.emailAddr = email;
-    	this.phoneNum = Long.valueOf(phoneNumber);	// Phone could be a string from the form, convert here
+    	this.phoneNum = phoneNumber;
     	this.address = address;
     	this.dateCreated = new Date();
     }
