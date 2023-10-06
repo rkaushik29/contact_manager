@@ -28,7 +28,7 @@ public class Contact {
     private String lastName;
     
     @Column(name = "phone_num")
-    private Long phoneNum;
+    private String phoneNum;
     
     @Column(name = "email_addr")
     private String emailAddr;
@@ -50,7 +50,7 @@ public class Contact {
     }
 
     // Parameterized constructor
-    public Contact(Long id, String firstName, String lastName, String email, Long phoneNumber, String address) {
+    public Contact(Long id, String firstName, String lastName, String email, String phoneNumber, String address) {
     	this.id = id;
     	this.firstName = firstName;
     	this.lastName = lastName;
@@ -61,7 +61,7 @@ public class Contact {
     	this.notes = null;
     }
     
-    public Contact(Long id, String firstName, String lastName, String email, Long phoneNumber, String address, Notes note) {
+    public Contact(Long id, String firstName, String lastName, String email, String phoneNumber, String address, Notes note) {
     	this.id = id;
     	this.firstName = firstName;
     	this.lastName = lastName;
@@ -74,7 +74,7 @@ public class Contact {
     
     // Getters and setters
     public Long getId() {
-    	return this.id;
+    	return id;
     }
 
     public void setId(Long id) {
@@ -82,7 +82,7 @@ public class Contact {
     }
 
     public String getFirstName() {
-    	return this.firstName;
+    	return firstName;
     }
 
     public void setFirstName(String firstName) {
@@ -90,7 +90,7 @@ public class Contact {
     }
 
     public String getLastName() {
-    	return this.lastName;
+    	return lastName;
     }
 
     public void setLastName(String lastName) {
@@ -98,23 +98,23 @@ public class Contact {
     }
 
     public String getEmail() {
-    	return this.emailAddr;
+    	return emailAddr;
     }
     
     public void setEmail(String email) {
     	this.emailAddr = email;
 	}
 	
-	public Long getPhoneNumber() {
-		return this.phoneNum;
+	public String getPhoneNumber() {
+		return phoneNum;
 	}
 	
 	public void setPhoneNumber(String phoneNumber) {
-		this.phoneNum = Long.valueOf(phoneNumber);
+		this.phoneNum = phoneNumber;
 	}
 	
 	public String getAddress() {
-		return this.address;
+		return address;
 	}
 	
 	public void setAddress(String address) {
@@ -122,7 +122,7 @@ public class Contact {
 	}
 	
 	public Date getDateCreated() {
-		return this.dateCreated;
+		return dateCreated;
 	}
 
 	public void setDate(Date date) {
@@ -130,7 +130,7 @@ public class Contact {
 	}
 	
 	public Notes getNote() {
-		return this.notes;
+		return notes;
 	}
 	
 	public void setNote(Notes note) {

@@ -38,7 +38,7 @@ public class ContactService {
         }
 
         // Return a mapping from contact to the DTO for Pages
-        return contacts.map(contact -> new ContactDTO(contact.getId(), contact.getFirstName(), contact.getLastName(), Long.toString(contact.getPhoneNumber()), contact.getEmail(), contact.getAddress(), contact.getDateCreated(), new NotesDTO(contact.getNote())));
+        return contacts.map(contact -> new ContactDTO(contact.getId(), contact.getFirstName(), contact.getLastName(), contact.getPhoneNumber(), contact.getEmail(), contact.getAddress(), contact.getDateCreated(), new NotesDTO(contact.getNote())));
     }
 
     // Create a new Contact with Note
@@ -73,7 +73,7 @@ public class ContactService {
         Contact savedContact = contactRepository.save(newContact);
 
         // Transform entity to DTO
-        ContactDTO savedContactDTO = new ContactDTO(savedContact.getId(), savedContact.getFirstName(), savedContact.getLastName(), Long.toString(savedContact.getPhoneNumber()), 
+        ContactDTO savedContactDTO = new ContactDTO(savedContact.getId(), savedContact.getFirstName(), savedContact.getLastName(), savedContact.getPhoneNumber(), 
         		savedContact.getEmail(), savedContact.getAddress(), savedContact.getDateCreated(), new NotesDTO(savedNote));
 
         // Confirmation - Log after saving to db
@@ -106,7 +106,7 @@ public class ContactService {
         Contact savedContact = contactRepository.save(newContact);
 
         // Transform entity to DTO
-        ContactDTO savedContactDTO = new ContactDTO(savedContact.getId(), savedContact.getFirstName(), savedContact.getLastName(), Long.toString(savedContact.getPhoneNumber()), savedContact.getEmail(), savedContact.getAddress(), savedContact.getDateCreated());
+        ContactDTO savedContactDTO = new ContactDTO(savedContact.getId(), savedContact.getFirstName(), savedContact.getLastName(), savedContact.getPhoneNumber(), savedContact.getEmail(), savedContact.getAddress(), savedContact.getDateCreated());
 
         // Confirmation - Log after saving to db
         System.out.println("New contact has been saved with ID: " + savedContact.getId());
@@ -123,7 +123,7 @@ public class ContactService {
         }
 
         // Return a mapping from contact to the DTO for Pages
-        return contacts.map(contact -> new ContactDTO(contact.getId(), contact.getFirstName(), contact.getLastName(), Long.toString(contact.getPhoneNumber()), contact.getEmail(), contact.getAddress(), contact.getDateCreated()));
+        return contacts.map(contact -> new ContactDTO(contact.getId(), contact.getFirstName(), contact.getLastName(), contact.getPhoneNumber(), contact.getEmail(), contact.getAddress(), contact.getDateCreated()));
     }
     
     // Method to fetch current details
@@ -151,7 +151,7 @@ public class ContactService {
         
         existingContact.setFirstName(contact.getFirstName() != null ? contact.getFirstName() : existingContact.getFirstName());
         existingContact.setLastName(contact.getLastName() != null ? contact.getLastName() : existingContact.getLastName());
-        existingContact.setPhoneNumber(contact.getPhoneNum() != null ? Long.toString(contact.getPhoneNum()) : Long.toString(existingContact.getPhoneNumber()));
+        existingContact.setPhoneNumber(contact.getPhoneNum() != null ? contact.getPhoneNum() : (existingContact.getPhoneNumber()));
         existingContact.setEmail(contact.getEmailAddr() != null ? contact.getEmailAddr() : existingContact.getEmail());
         existingContact.setAddress(contact.getAddress() != null ? contact.getAddress() : existingContact.getAddress());
         existingNotes.setNoteText(contact.getNoteDTO().getNoteText() != null ? contact.getNoteDTO().getNoteText() : existingNotes.getNoteText());

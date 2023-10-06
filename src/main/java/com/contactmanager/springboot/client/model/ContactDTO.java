@@ -6,7 +6,7 @@ public class ContactDTO {
     private Long id;
     private String firstName;
     private String lastName;
-    private Long phoneNum;
+    private String phoneNum;
     private String emailAddr;
     private String address;
     private Date dateCreated;
@@ -21,7 +21,7 @@ public class ContactDTO {
         this.firstName = fname;
         this.lastName = lname;
         this.emailAddr = email;
-        this.phoneNum = Long.valueOf(phone);
+        this.phoneNum = phone;
         this.address = addr;
         this.dateCreated = dateCreated;
         this.dateCreated = new Date();
@@ -43,7 +43,7 @@ public class ContactDTO {
         this.firstName = fname;
         this.lastName = lname;
         this.emailAddr = email;
-        this.phoneNum = Long.valueOf(phone);
+        this.phoneNum = phone;
         this.address = "";
         this.notesDto = new NotesDTO();
     }
@@ -73,7 +73,7 @@ public class ContactDTO {
         return lastName;
     }
 
-    public Long getPhoneNum() {
+    public String getPhoneNum() {
         return phoneNum;
     }
 
@@ -106,7 +106,7 @@ public class ContactDTO {
         this.lastName = lastName;
     }
 
-    public void setPhoneNum(Long phoneNum) {
+    public void setPhoneNum(String phoneNum) {
         this.phoneNum = phoneNum;
     }
 

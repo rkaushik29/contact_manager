@@ -49,7 +49,7 @@ public class ContactController {
         		ContactDTO contactDTO = contactService.createContact(firstName, lastName, phoneNum, emailAddr, addr, noteText);
         	}
             
-            return new ResponseEntity<>("Contact added successfully.", HttpStatus.CREATED);
+            return new ResponseEntity<>("Contact " + firstName + " added successfully.", HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
@@ -76,7 +76,7 @@ public class ContactController {
             }
             ContactDTO updatedContact = new ContactDTO(Long.valueOf(contactId), firstName, lastName, phoneNum, emailAddr, addr, existingContact.getDateCreated(), existingNote);
             contactService.editContact(updatedContact);
-            return new ResponseEntity<>("Contact updated successfully.", HttpStatus.OK);
+            return new ResponseEntity<>("Contact " + contactId + " updated successfully.", HttpStatus.OK);
         } catch (EntityNotFoundException e) {
             return new ResponseEntity<>("Contact not found.", HttpStatus.NOT_FOUND);
         }
@@ -84,19 +84,32 @@ public class ContactController {
     
     // Endpoint to show all contacts
     @GetMapping("/all")
-    public Page<ContactDTO> getAllContacts(@RequestParam(name = "page", defaultValue = "0") int page,
-                                           @RequestParam(name = "size", defaultValue = "10") int size,
-                                           @RequestParam(name = "sort", defaultValue = "id") String sort) throws NotFoundException {
-        Pageable pageable = PageRequest.of(page, size, Sort.by(sort));
-        return contactService.showAllContacts(pageable);
-    }
+    public ResponseEntity<Page<ContactDTO>> getAllContacts(
+	    @RequestParam(name = "page", defaultValue = "0") int page,
+	    @RequestParam(name = "size", defaultValue = "10") int size,
+	    @RequestParam(name = "sort", defaultValue = "id") String sort) {
+	    try {
+	        Pageable pageable = PageRequest.of(page, size, Sort.by(sort));
+	        Page<ContactDTO> contactsPage = contactService.showAllContacts(pageable);
+	        
+	        // Check if no contacts were found
+	        if (contactsPage.isEmpty()) {
+	            return ResponseEntity.noContent().build(); // Return 204 No Content
+	        }
+	        
+	        return ResponseEntity.ok(contactsPage);
+	    } catch (Exception e) {
+	        // Handle other exceptions and return an appropriate error response
+	        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+	    }
+	}
     
     // Endpoint to delete a contact after confirmation
     @DeleteMapping("/delete")
     public ResponseEntity<String> deleteContact(@RequestParam String contactId) {
         try {
             contactService.deleteContact(Long.valueOf(contactId));
-            return new ResponseEntity<>("Contact deleted successfully.", HttpStatus.OK);
+            return new ResponseEntity<>("Contact " + contactId + " deleted successfully.", HttpStatus.OK);
         } catch (EntityNotFoundException e) {
             return new ResponseEntity<>("Contact not found.", HttpStatus.NOT_FOUND);
         }
