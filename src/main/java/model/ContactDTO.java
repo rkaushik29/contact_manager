@@ -48,6 +48,17 @@ public class ContactDTO {
         this.notesDto = new NotesDTO();
     }
     
+    public ContactDTO(Contact contact, NotesDTO noteDto) {
+    	this.id = contact.getId();
+        this.firstName = contact.getFirstName();
+        this.lastName = contact.getLastName();
+        this.emailAddr = contact.getEmail();
+        this.phoneNum = contact.getPhoneNumber();
+        this.address = contact.getAddress();
+        this.dateCreated = contact.getDateCreated();
+        this.notesDto = noteDto;
+    }
+    
     
  // Getters
     public Long getId() {

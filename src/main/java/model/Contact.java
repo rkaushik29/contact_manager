@@ -105,8 +105,8 @@ public class Contact {
     	this.emailAddr = email;
 	}
 	
-	public String getPhoneNumber() {
-		return Long.toString(this.phoneNum);
+	public Long getPhoneNumber() {
+		return this.phoneNum;
 	}
 	
 	public void setPhoneNumber(String phoneNumber) {
