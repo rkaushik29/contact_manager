@@ -18,7 +18,7 @@ public class Notes {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "note_id")
+    @Column(name = "contact_id")
     private Long contactId;
     
     @Column(name = "note_text")
