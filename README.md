@@ -10,7 +10,8 @@ Also, ensure you have Eclipse IDE to run the server.
 - Click on the `Run` button on the Eclipse IDE terminal to start the server.
 
 ## Testing Endpoints
-- Open Postman, and first run the `Add Contact` request. In the Query Params, add contact info (without `""`)
+- Open Postman, and import `contact_manager_api.postman_collection.json` which contains endpoints to test.
+- First run the `Add Contact` request. In the Query Params, add contact info (without `""`)
 - Run `Show Contacts` only after adding >= 1 contacts. Check here for contact IDs to use when deleting contacts.
 - Run `Update Contacts` only after adding >= 1 contacts.
 - Run `Delete Contact` only after adding a contact.
