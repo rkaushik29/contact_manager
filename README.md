@@ -1,7 +1,5 @@
 # Contact Manager
 
-*Time Spent Coding: 13 hours*
-
 ## Prerequisites
 This application is built in Java using JPA, H2 and Spring Boot. Please ensure you have JDK17+ installed before running.
 Also, ensure you have Eclipse IDE to run the server.
